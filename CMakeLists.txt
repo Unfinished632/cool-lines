@@ -9,6 +9,8 @@ set(CMAKE_INTERPROCEDURAL_OPTIMIZATION TRUE) #link time optimization
 project(cool-lines)
 
 add_subdirectory(thirdparty/raylib)
+add_subdirectory(thirdparty/imgui-docking)
+add_subdirectory(thirdparty/rlImGuiCMake)
 
 file(GLOB_RECURSE MY_SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
 
@@ -20,4 +22,4 @@ set_property(TARGET "${CMAKE_PROJECT_NAME}" PROPERTY CXX_STANDARD 23)
 target_sources("${CMAKE_PROJECT_NAME}" PRIVATE ${MY_SOURCES} )
 
 
-target_link_libraries("${CMAKE_PROJECT_NAME}" PRIVATE raylib)
+target_link_libraries("${CMAKE_PROJECT_NAME}" PRIVATE raylib imgui rlImGui)
