@@ -3,39 +3,20 @@
 #include <rlImGui.h>
 
 #include "buildConfig.h"
+#include "engine.h"
 
 int main(){
-    #ifdef RELEASE_BUILD
-        SetTraceLogLevel(LOG_NONE);
-    #endif
-
-
-    InitWindow(800, 450, "raylib [core] example - basic window");
-
-    IMGUI_CHECKVERSION();
-
-    rlImGuiSetup(true);
+    Engine* engine = new Engine(1000, 500, "Cool Lines | The Stylish Graphing Calculator"); 
 
     while(!WindowShouldClose()){
-        BeginDrawing();
-        rlImGuiBegin();
+        engine->StartFrame();
 
-        ClearBackground(BLACK);
-        DrawText(TextFormat("%d", GetFPS()), 10, 10, 50, RAYWHITE);
+        DrawText("Hello World!", 0, 0, 50, WHITE);
 
-        ImGui::Begin("Settings");
-
-        ImGui::Button("Hello World!");
-
-        ImGui::End();
-
-        rlImGuiEnd();
-        EndDrawing();
+        engine->EndFrame();
     }
 
-    rlImGuiShutdown();
-
-    CloseWindow();
+    delete engine;
 
     return 0;
 }

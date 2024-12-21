@@ -4,6 +4,11 @@
 
 class Engine{
     public:
-    Engine();
+    Engine(int windowWidth, int windowHeight, const char* title);
     ~Engine();
+
+    Color clearColor = BLACK;
+
+    void StartFrame();
+    void EndFrame();
 };
