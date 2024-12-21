@@ -1,4 +1,5 @@
 #include "program.h"
+#include <raylib.h>
 
 Program::Program(){
     engine = new Engine(1000, 500, "Cool Lines | The stylish graphing calculator");
@@ -12,8 +13,16 @@ void Program::Start(){
     while(!WindowShouldClose()){
         engine->StartFrame();
 
-        DrawText("Hello World!", 0, 0, 50, WHITE);
+        DrawAxisLines();
 
         engine->EndFrame();
     }
+}
+
+void Program::DrawAxisLines(){
+    int width = engine->windowWidth;
+    int height = engine->windowHeight;
+
+    DrawLine(0, height / 2, width, height / 2, RED);
+    DrawLine(width / 2, 0, width / 2, height, GREEN);
 }

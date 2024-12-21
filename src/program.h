@@ -9,4 +9,6 @@ class Program{
 
     private:
     Engine* engine;
+
+    void DrawAxisLines();
 };

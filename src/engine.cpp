@@ -7,6 +7,8 @@ Engine::Engine(int windowWidth, int windowHeight, const char* title){
 
 
     InitWindow(windowWidth, windowHeight, title);
+    this->windowWidth = windowWidth;
+    this->windowHeight = windowHeight;
 
     IMGUI_CHECKVERSION();
 
