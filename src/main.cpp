@@ -3,20 +3,12 @@
 #include <rlImGui.h>
 
 #include "buildConfig.h"
-#include "engine.h"
+#include "program.h"
 
 int main(){
-    Engine* engine = new Engine(1000, 500, "Cool Lines | The Stylish Graphing Calculator"); 
+    Program* program = new Program();
 
-    while(!WindowShouldClose()){
-        engine->StartFrame();
-
-        DrawText("Hello World!", 0, 0, 50, WHITE);
-
-        engine->EndFrame();
-    }
-
-    delete engine;
+    program->Start();
 
     return 0;
 }
