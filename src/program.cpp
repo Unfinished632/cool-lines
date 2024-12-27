@@ -1,8 +1,12 @@
+#include <cmath>
+
 #include "program.h"
 #include <raylib.h>
 
+#include "util.h"
+
 Program::Program(){
-    engine = new Engine(1000, 500, "Cool Lines | The stylish graphing calculator");
+    engine = new Engine(1000, 1000, "Cool Lines | The stylish graphing calculator");
 }
 
 Program::~Program(){
@@ -14,6 +18,18 @@ void Program::Start(){
         engine->StartFrame();
 
         DrawAxisLines();
+
+        /*for(float x = -engine->windowWidth / 2; x < engine->windowWidth; x += 0.1f){
+            float y = engine->windowHeight;
+            y -= std::tan(x);
+            DrawPixelV(Vector2(x + engine->windowWidth / 2, y - engine->windowHeight / 2), WHITE);
+        }*/
+
+        for(float x = -10; x < 10; x += 0.0002f){
+            float y = std::log(x);
+            y = -y;
+            DrawPixelV(Vector2(Map(x, -10, 10, 0, engine->windowWidth), Map(y, -10, 10, engine->windowHeight, 0)), WHITE);
+        }
 
         engine->EndFrame();
     }
